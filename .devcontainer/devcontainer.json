@@ -1,0 +1,12 @@
+{
+  "name": "BEA",
+  "dockerComposeFile": ["../docker-compose.dev.yml", "docker-compose.yml"],
+  "service": "jupyter",
+  "workspaceFolder": "/usr/src/app/bureau-of-economic-analysis",
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#004400"
+    }
+  },
+  "extensions": ["ms-python.python", "ms-toolsai.jupyter"]
+}
