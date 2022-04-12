@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  jupyter:
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile.dev
+    volumes:
+      - ..:/usr/src/app/bureau-of-economic-analysis

@@ -1,6 +1,9 @@
 {
   "name": "BEA",
-  "dockerComposeFile": ["../docker-compose.dev.yml", "docker-compose.yml"],
+  "dockerComposeFile": [
+    "../.docker/docker-compose.dev.yml",
+    "docker-compose.yml"
+  ],
   "service": "jupyter",
   "workspaceFolder": "/usr/src/app/bureau-of-economic-analysis",
   "settings": {
