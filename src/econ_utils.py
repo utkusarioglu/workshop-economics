@@ -34,3 +34,25 @@ def bea_api(**params):
 def create_df(data):
   """ Creates a vanilla dataframe """
   return pd.DataFrame([pd.Series(row.values(), index=row.keys()) for row in data])
+
+def iex_cloud_api(request_path, params = {}):
+  """
+  Facilitates api calls to IEX cloud
+  :param str request_path: IEX cloud path to make request. Requests are made
+    to the `stable` endpoint.
+  :param params: Additional params to provide for the request. The token is
+    provided for you through `IEX_CLOUD_API_TOKEN` environment variable
+  :type params: dict or None
+  :return: Json response
+  :raises RuntimeError: if the request fails with any status code other than 
+    `200`.
+  """
+  base_path = "https://cloud.iexapis.com/stable"
+  response = requests.get(f"{base_path}/{request_path}", params={
+    "token": config["IEX_CLOUD_API_TOKEN"],
+    **params
+  })
+  if(response.status_code != 200):
+    print(response.text)
+    raise RuntimeError("IEX cloud access error")
+  return response.json()
