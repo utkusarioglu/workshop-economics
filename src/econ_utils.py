@@ -56,3 +56,27 @@ def iex_cloud_api(request_path, params = {}):
     print(response.text)
     raise RuntimeError("IEX cloud access error")
   return response.json()
+
+def coinmarketcap_api(request_path, **params):
+  """
+  Facilitates api calls to CoinMarketCap
+  :param str request_path: the endpoint to make the requesto
+  :param dict params: parameters to use for the request
+  :return: json response
+  :raises RuntimeError: if the request fails with any status code other than
+    `200`.
+  """
+  base_url = "https://pro-api.coinmarketcap.com/v1"
+  headers = {
+    "Accept": "application/json",
+    "X-CMC_PRO_API_KEY": config["COINMARKETCAP_API_KEY"]
+  }
+  response = requests.get(
+    f"{base_url}/{request_path}", 
+    params=params, 
+    headers=headers
+  )
+  if(response.status_code != 200):
+    print(response.text)
+    raise RuntimeError("Coinmarketcap access error")
+  return response.json()
