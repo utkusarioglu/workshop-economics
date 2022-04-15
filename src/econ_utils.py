@@ -35,7 +35,7 @@ def create_df(data):
   """ Creates a vanilla dataframe """
   return pd.DataFrame([pd.Series(row.values(), index=row.keys()) for row in data])
 
-def iex_cloud_api(request_path, params = {}):
+def iex_cloud_api(request_path, **params):
   """
   Facilitates api calls to IEX cloud
   :param str request_path: IEX cloud path to make request. Requests are made
@@ -76,7 +76,7 @@ def coinmarketcap_api(request_path, **params):
     params=params, 
     headers=headers
   )
-  if(response.status_code != 200):
+  if response.status_code != 200:
     print(response.text)
     raise RuntimeError("Coinmarketcap access error")
   return response.json()
