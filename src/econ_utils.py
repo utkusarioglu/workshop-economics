@@ -1,4 +1,5 @@
 from dotenv import dotenv_values
+from numpy import NaN
 import json
 import requests
 import pandas as pd
@@ -80,3 +81,29 @@ def coinmarketcap_api(request_path, **params):
     print(response.text)
     raise RuntimeError("Coinmarketcap access error")
   return response.json()
+
+def chunks(lst, chunk_size):
+    """
+    Yield successive n-sized chunks from a list
+    :param list lst: list to divide into chunks
+    :param int chunk_size: number of items in each chunk
+    :raises ValueError: if chunk size is smaller than 1
+    :return generator for chunks
+    """
+    if chunk_size < 1:
+      raise ValueError("Chunk size cannot be less than 1")
+    for i in range(0, len(lst), chunk_size):
+        yield lst[i:i + chunk_size]
+
+def check_divide_by_zero(dividend, divisor):
+    """
+    Checks whether the dividend and divisor exists
+    :param number dividend: dividend
+    :param number divisor: divisor
+    :return number: division or not a number placeholder 
+    :type return: division or numpy.NaN
+    """
+    try:
+        return dividend / divisor
+    except:
+        return NaN
