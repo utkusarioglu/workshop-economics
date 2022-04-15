@@ -10,3 +10,4 @@ RUN /opt/conda/bin/conda install xlsxwriter -y --quiet
 RUN /opt/conda/bin/conda install -c conda-forge python-dotenv -y --quiet
 RUN /opt/conda/bin/conda install -c conda-forge matplotlib -y --quiet
 RUN /opt/conda/bin/conda install -c conda-forge squarify -y --quiet
+RUN /opt/conda/bin/conda install -c anaconda openpyxl -y --quiet
