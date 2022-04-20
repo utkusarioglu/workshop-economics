@@ -5,7 +5,7 @@
     "docker-compose.yml"
   ],
   "service": "jupyter",
-  "workspaceFolder": "/usr/src/app/bureau-of-economic-analysis",
+  "workspaceFolder": "/usr/src/app/workshop/economics",
   "settings": {
     "workbench.colorCustomizations": {
       "activityBar.background": "#004400"

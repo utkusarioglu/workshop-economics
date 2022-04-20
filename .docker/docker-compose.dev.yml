@@ -4,4 +4,4 @@ services:
   jupyter:
     image: utkusarioglu/econ-dev-environment:latest
     volumes:
-      - ..:/usr/src/app/bureau-of-economic-analysis
+      - ..:/usr/src/app/workshop/economics
