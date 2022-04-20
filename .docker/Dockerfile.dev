@@ -1,13 +1,13 @@
 FROM continuumio/miniconda3
+SHELL ["/bin/bash", "-c"]
 RUN apt update
 RUN apt install vim -y
 
-RUN /opt/conda/bin/conda install jupyter -y --quiet
-RUN /opt/conda/bin/conda install numpy -y --quiet
-RUN /opt/conda/bin/conda install pandas -y --quiet
-RUN /opt/conda/bin/conda install scipy -y --quiet
-RUN /opt/conda/bin/conda install xlsxwriter -y --quiet
-RUN /opt/conda/bin/conda install -c conda-forge python-dotenv -y --quiet
-RUN /opt/conda/bin/conda install -c conda-forge matplotlib -y --quiet
-RUN /opt/conda/bin/conda install -c conda-forge squarify -y --quiet
-RUN /opt/conda/bin/conda install -c anaconda openpyxl -y --quiet
+COPY .docker/environment.yml .
+RUN conda env create --file environment.yml
+
+RUN useradd -m econ
+USER econ
+
+RUN echo "source activate econ" > ~/.bashrc
+ENV PATH "/opt/conda/envs/econ/bin:$PATH"

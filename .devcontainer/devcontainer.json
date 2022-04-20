@@ -11,5 +11,8 @@
       "activityBar.background": "#004400"
     }
   },
-  "extensions": ["ms-python.python", "ms-toolsai.jupyter"]
+  "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+  "features": {
+    "github-cli": "latest"
+  }
 }
