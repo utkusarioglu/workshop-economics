@@ -9,5 +9,5 @@ RUN conda env create --file environment.yml
 RUN useradd -m econ
 USER econ
 
-RUN echo "source activate econ" > ~/.bashrc
+COPY .docker/.bashrc /home/econ/.bashrc
 ENV PATH "/opt/conda/envs/econ/bin:$PATH"
