@@ -6,6 +6,9 @@ RUN apt install vim -y
 COPY .docker/environment.yml .
 RUN conda env create --file environment.yml
 
+ARG ROOT_PASS=root
+RUN sh -c 'echo "root:$ROOT_PASS" | chpasswd'
+
 RUN useradd -m econ
 USER econ
 
